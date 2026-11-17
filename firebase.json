@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "!/**/*.@(js|mjs|wasm|css|map|json|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|otf)",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.wasm",
+        "headers": [{ "key": "Content-Type", "value": "application/wasm" }]
+      },
+      {
+        "source": "**/@(drift_worker.js|sqlite3.wasm|flutter_service_worker.js|index.html)",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      }
+    ]
+  }
+}
